@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Headroom from "react-headroom";
 import { NavLink } from "react-router-dom";
 import { FaBarsStaggered } from "react-icons/fa6";
@@ -11,15 +11,36 @@ import IconsBrand from "../../Icons/iconsBrand";
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [scroll, setScroll] = useState(false);
 
     const handleClick = () => {
         setMenuOpen(!menuOpen);
     };
 
+    const handleScroll = () => {
+        if (window.scrollY > 90) {
+            setScroll(true);
+        } else {
+            setScroll(false);
+        }
+    };
+
+    useEffect(() => {
+        handleScroll();
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
         <>
             <Headroom>
-                <header className={`px-10 py-3 bg-slate-800 rounded-bl-3xl rounded-br-3xl transition-all duration-700 ease-in-out ${menuOpen ? "bg-slate-800" : ""} `}>
+                <header
+                    className={`px-10 py-3 transition-all duration-300 ease-in-out ${menuOpen ? "bg-slate-800 rounded-bl-3xl rounded-br-3xl" : ""} ${
+                        scroll ? "bg-slate-800 fixed w-full transition-all duration-1000 ease-in rounded-bl-3xl rounded-br-3xl" : ""
+                    }`}>
                     <div className={`flex justify-between items-center`}>
                         <div className="font-bold text-lg text-white w-28">
                             <IconsBrand />
@@ -45,8 +66,8 @@ export default function Navbar() {
 
                     {/* Mobile Navbar Responsive */}
                     {menuOpen && (
-                        <nav data-aos="fade-down" data-aos-duration="600" className="text-white text-center h-60 flex items-start mt-16 md:hidden">
-                            <ul className="flex flex-col text-start gap-y-5 w-full">
+                        <nav data-aos="fade-down" data-aos-duration="600" className="text-white h-60 flex mt-8 md:hidden">
+                            <ul className="flex flex-col text-start gap-y-4 w-full">
                                 <NavLink to="/" className={({ isActive }) => `flex items-center gap-3 px-4 py-2  hover:bg-slate-500 hover:rounded-md ${isActive ? "text-yellow-500" : ""}`}>
                                     <FaHome className="text-base" />
                                     Home
