@@ -5,7 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import { FaHome } from "react-icons/fa";
 import { MdConnectWithoutContact } from "react-icons/md";
 import { FaAddressCard } from "react-icons/fa6";
-import Button from "../Button";
+import Button from "../Button/Index";
 import IconsBrand from "../../Icons/iconsBrand";
 
 export default function Navbar() {

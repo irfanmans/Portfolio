@@ -1,6 +1,6 @@
 import { useTypewriter } from "react-simple-typewriter";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
-import Button from "../Components/Button/index.jsx";
+import Button from "../Components/Button/Index";
 import ProfileImages from "../images/profile-img.png";
 
 export default function Home() {
