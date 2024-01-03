@@ -19,7 +19,7 @@ export default function Navbar() {
     return (
         <>
             <Headroom>
-                <header className={`px-10 py-3 bg-sky-800 rounded-bl-2xl rounded-br-2xl transition-all duration-700 ease-in-out ${menuOpen ? "bg-slate-800" : ""} `}>
+                <header className={`px-10 py-3 bg-slate-800 rounded-bl-3xl rounded-br-3xl transition-all duration-700 ease-in-out ${menuOpen ? "bg-slate-800" : ""} `}>
                     <div className={`flex justify-between items-center`}>
                         <div className="font-bold text-lg text-white w-28">
                             <IconsBrand />
